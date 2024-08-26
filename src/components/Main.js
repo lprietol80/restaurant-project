@@ -1,8 +1,14 @@
 import React from "react";
+import Hero from "./Hero";
+import Specials from "./Specials";
 
 function Main (){
   return (
-    <main>This is the main section</main>
+    <main>
+      <h2>This is the main section</h2>
+      <Hero/>
+      <Specials/>
+    </main>
   )
 }
 

@@ -1,13 +1,181 @@
+:root{
+--pribaryColor: #495E57;
+--primaryColorB:#F4CE14;
+ --secondaryColor:#EE9972;
+ --secondaryColorB:#FBDABB;
+ --hightlightColor:#EDEFEE;
+ --hightlightColorB:#333333;
+
+
+
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+h1{
+  font-size: 5.6rem;
+  font-weight: 500;
 }
+h2 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+header{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height:70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid var(--hightlightColorB);
+}
+
+
+nav{
+  width: 90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--hightlightColorB);
+}
+
+
+
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: none;
+  justify-content: flex-end;
+  align-items: center;
+}
+nav ul.open{
+  display: flex;
+}
+nav li {
+  height: 60px;
+}
+
+nav a{
+  height: 100%;
+  padding: 0px 30px ;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+nav a:hover {
+  border-bottom: solid 2px #495e57;
+  font-weight: bold;
+}
+
+.menu-icon{
+  display: none;
+  cursor: pointer;
+  height: 40px;
+}
+
+
+.sidebar{
+  margin:0;
+  margin: 0;
+  padding: 0px;
+}
+
+.sidebar.visible{
+  position: fixed;
+  top: 71px;
+  right: 0px;
+  height: 100vh;
+  width: 80%;
+  z-index: 999;
+  background-color: rgb(255,255,255);
+  box-shadow:-1px 0px 3px  rgba(73, 94, 88,0.4);
+  backdrop-filter: blur(10px);
+  display: block;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sidebar > li{
+  width: 100%;
+}
+.sidebar a{
+  width: 100%;
+  margin: 0;
+}
+
+section{
+  width: 90%;
+  display: flex;
+  background-color: cornsilk;
+
+
+
+  margin-bottom:50px;
+  border: 2px solid salmon;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+
+  
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+
+
+
+  background-color: rgb(196, 217, 255);
+}
+.navbar-footer{
+  display: flex;
+  flex-direction: column;
+}
+.navbar-footer ul{
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media only screen and (max-width: 64rem)
+{
+  header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px;
+  }
+
+.menu-icon{
+    display:block;
+  }
+nav ul{
+  display: none;
+}
+.sidebar :hover{
+  background-color: #495e57;
+  color: #EDEFEE;
+
+}
+
+}
+

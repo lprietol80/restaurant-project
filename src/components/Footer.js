@@ -3,12 +3,13 @@ import logo from '../images/Logo .svg'
 
 function Footer (){
 return(
-  <footer>
+  <footer>    
     <section>
+      <div>
       <img src={logo} alt="logo"/>
       <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</p>
-    </section>
-    <nav>
+      </div>
+      <nav className="navbar-footer">
       <h5>
         Important Links
       </h5>
@@ -21,7 +22,7 @@ return(
         <li><a href="#">Login</a></li>
       </ul>
     </nav>
-    <section>
+    <div>
       <h5>
         contact
       </h5>
@@ -37,9 +38,8 @@ return(
       <p>email</p>
       <p>little@littlelemon.com</p>
       </div>
-      
-    </section>
-    <nav>
+    </div>
+    <nav className="navbar-footer">
       <h5>
         Social Media Links
       </h5>
@@ -51,11 +51,8 @@ return(
       </ul>
     </nav>
 
-
-
-
+    </section>
   </footer>
 )
-
 }
 export default Footer;
