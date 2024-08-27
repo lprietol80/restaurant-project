@@ -3,33 +3,36 @@ import logo from '../images/Logo.svg';
 import MenuIcon from '../images/icon _hamburger_menu.svg';
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 
 function Nav (){
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu= ()=>{
-    setMenuOpen(!menuOpen)
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile= useMediaQuery({query:'(max-width:60rem)'})
+
+  const toggleMenu = ()=>{
+    setIsOpen(!isOpen)
   }
-
-
-
   return (
     <header>
-      <nav>
-        <Link to="/"><img src={logo} alt="logo" id="logo"/></Link>
-        <div className="menu-icon" onClick={()=>{
-          setMenuOpen(!menuOpen)
-        }}>
-        <img src={MenuIcon}/>
-        </div>
-        <ul className={`sidebar ${menuOpen ? "visible" : ""}`}>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/menu">Menu</Link></li>
-          <li><Link to="/reservations">Reservations</Link></li>
-          <li><Link to="/orderonline">Order Online</Link></li>
-          <li><Link to="/login">Login</Link></li>
+      <nav className="navbar">
+      <Link to="/home" className="navbar-logo">
+        <img src={logo} alt="logo" id="logo"/>
+      </Link>
+      <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+          <li><Link to="/home" onClick={toggleMenu}>Home</Link></li>
+          <li><Link to="/about" onClick={toggleMenu} >About</Link></li>
+          <li><Link to="/menu" onClick={toggleMenu}>Menu</Link></li>
+          <li><Link to="/reservations" onClick={toggleMenu}>Reservations</Link></li>
+          <li><Link to="/orderonline" onClick={toggleMenu}>Order Online</Link></li>
+          <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
         </ul>
+        {isMobile && (
+          <div className="navbar-toggle" onClick={toggleMenu}>
+          <img src={MenuIcon}/>
+          </div>
+        )
 
+        }
 
       </nav>
     </header>
