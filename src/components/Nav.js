@@ -13,7 +13,7 @@ function Nav (){
     setIsOpen(!isOpen)
   }
   return (
-    <header>
+    <header className="navbar-header">
       <nav className="navbar">
       <Link to="/home" className="navbar-logo">
         <img src={logo} alt="logo" id="logo"/>

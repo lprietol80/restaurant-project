@@ -3,7 +3,7 @@ import logo from '../images/Logo .svg'
 
 function Footer (){
 return(
-  <footer>    
+  <footer className="bmf-flex">    
     <section>
       <div>
       <img src={logo} alt="logo"/>

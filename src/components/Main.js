@@ -4,8 +4,7 @@ import Specials from "./Specials";
 
 function Main (){
   return (
-    <main>
-      <h2>This is the main section</h2>
+    <main className="bmf-flex">     
       <Hero/>
       <Specials/>
     </main>
