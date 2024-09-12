@@ -2,7 +2,7 @@ import React from "react";
 import greekSalad from "../images/greek salad.jpg"
 import bruchetta from "../images/bruchetta.svg"
 import lemonDessert from "../images/lemon dessert.jpg"
-
+import { Link, useNavigate } from "react-router-dom"
 const specialData =[
   {
     id:1,
@@ -13,7 +13,7 @@ const specialData =[
   },
   {
     id:2,
-    image:bruchetta,
+    image:bruchetta, 
     title:"Bruchetta",
     price:"$7.99",
     description:"Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil."
@@ -27,7 +27,7 @@ const specialData =[
   },
 ]
 
-function Specials ({imageSource,title,price,description}){
+function Specials ({image,title,price,description}){
   return(
 
 
@@ -44,14 +44,18 @@ function Specials ({imageSource,title,price,description}){
         specialData.map(card =>(
           <div className="card-spSec" key={card.id}>  
           <div className="card-spSec-imgCon">
-            <img src={card.image} className="card-spSec-img"/>
+            {card.image && <img src={card.image} alt={card.title} className="card-spSec-img"/>}
           </div>
           <div className="card-spSec-body">
             <header className="spSec-headerCon">
-              <h3>{card.title}</h3><h3>{card.price}</h3>
+              {card.title && <h3>{card.title}</h3>}
+              {card.title && <h3>{card.price}</h3>}
             </header>
-            <p>{card.description}</p>
+            {card.description && <p>{card.description}</p>}
+            <Link to={`/ordenonline/`}>
             <button className="card-btn"> Order online</button>
+            </Link>
+            
           </div>
         </div> 
 
@@ -68,15 +72,17 @@ function Specials ({imageSource,title,price,description}){
     specialData.map(card =>(
       <div className="card-spSec_MaxW" key={card.id}> 
       <header className="spSec-headerCon">
-        <h3>{card.title}</h3>
-        <h3>{card.price}</h3>
+        {card.title && <h3>{card.title}</h3>}
+        {card.price && <h3>{card.price}</h3>}
       </header>
       <div className="card-spSec-body_MaxW">
         <div>
-          <p>{card.description}</p>
+          {card.description && <p>{card.description}</p>}
+          <Link to={`/ordenonline/`}>
           <button className="card-btn"> Order online</button>
+          </Link>
         </div>      
-        <img src={card.image} className="card-spSec-img_MaxW"/>
+        {card.image && card.title && <img src={card.image} alt={card.title} className="card-spSec-img_MaxW"/>}
       </div>
     </div> 
 

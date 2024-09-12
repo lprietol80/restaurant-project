@@ -12,7 +12,7 @@ function Hero (){
               <p className="hero_text_header_p">Chicago</p>
             </header>
             <div className="hero_div">
-              <p>We are a family owned mediterranean restaurante focused on traditional recipes served width a modern twist</p>
+              <p className="article_p">We are a family owned mediterranean restaurante focused on traditional recipes served width a modern twist</p>
             </div>
             <button className="reserve_btn">Reserve a table</button>
           </section>
