@@ -15,11 +15,11 @@ function Nav (){
   return (
     <header className="navbar-header">
       <nav className="navbar">
-      <Link to="/home" className="navbar-logo">
+      <Link to="/" className="navbar-logo">
         <img src={logo} alt="logo" id="logo"/>
       </Link>
       <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
-          <li><Link to="/home" onClick={toggleMenu}>Home</Link></li>
+          <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
           <li><Link to="/about" onClick={toggleMenu} >About</Link></li>
           <li><Link to="/menu" onClick={toggleMenu}>Menu</Link></li>
           <li><Link to="/reservations" onClick={toggleMenu}>Reservations</Link></li>

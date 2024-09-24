@@ -8,11 +8,7 @@
    
    /* sizes */
    --max-width:57.5rem;
-  
-  
-  
   }
-
 
 
   .bmf-flex{
@@ -23,17 +19,17 @@
   }
   .section-flex-w90{
     width: 90%;
-    /* display: flex;
+    /*
     flex-direction: column;
     justify-content: center;
     align-items: center; */
   }
-  
-  
+
   h1{
     font-size: 5.6rem;
     font-weight: 500;
   }
+
   h2 {
     font-size: 4rem;
     font-weight: 500;
@@ -49,15 +45,15 @@
     justify-content: center;
     border-bottom: 1px solid var(--hightlightColorB);
     background-color: white;
-    
+    z-index: 2;
   }
+
   .navbar{
     display: flex;
     justify-content: space-between; 
     align-items: center;
     background-color: white;
     width: 90%;
-    
   }
   .navbar-menu{
     display: flex;
@@ -316,18 +312,16 @@ text-align: justify;
     align-items: center;
     margin-bottom:1rem;
     background-color: #fff;
-    
-
-
   }
   
   
  .section-center{
     width: 90%; 
     display:flex;
-    flex-direction:column;
+    flex-direction:column; 
     justify-content: center;  
   }  
+
   .section-header{
   display:flex;
   justify-content:center; 
@@ -426,14 +420,77 @@ border-radius:16px;
 }
 
 
+.sec-centerFooter{
+  width: 90%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-start;
+}
+.logoContainer{
+  margin: auto;
+}
+.contactFooter{
+  margin: auto;
+  color: #333333;
+  font-weight: bold;
+}
+.contactFooter ul{
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
 
-
-
-
-
+.sec-centerFooter h5 {
+  color: var(--primaryColor);
+  font-weight: bolder;
+  font-size: 26px;
+  margin-bottom: 0;
+}
+.socials img {
+  width: 24px;
+  border-radius: 12px;
+}
 .yellow-bgd{
   background-color: var(--primaryColorB);
 }
+.footerNav{
+  display: flex;
+  flex-direction: column;
+} 
+
+.footerNavHeader{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0px;
+}
+.navBodyFooter{
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid var(--primaryColor);
+  padding: 10px 0px;
+}
+
+.navBodyFooter ul {
+list-style-type: none;
+padding: 0;
+}
+
+.navBodyFooter ul a {
+text-decoration: none;
+color: #333333;
+font-weight: bold;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -512,5 +569,6 @@ border-radius:16px;
   #spCards-Con_MaxW{
     display:flex;
   }
+
 
 }
