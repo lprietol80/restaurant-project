@@ -1,0 +1,16 @@
+.yellow-btn {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 15px 20px;
+  border-radius: 10rem;
+  background-color: #F4CE14;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.yellow-btn:hover {
+  filter: brightness(0.8);
+}

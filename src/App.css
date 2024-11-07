@@ -17,13 +17,6 @@
     justify-content: center;
     width: 100%;
   }
-  .section-flex-w90{
-    width: 90%;
-    /*
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-  }
 
   h1{
     font-size: 5.6rem;
@@ -54,6 +47,7 @@
     align-items: center;
     background-color: white;
     width: 90%;
+    max-width: 92rem;
   }
   .navbar-menu{
     display: flex;
@@ -90,17 +84,30 @@
     display: flex;
     flex-direction: column;
   }
+
+  .order-online{
+    background: var(--primaryColor);
+    padding: 0.3rem 1rem;
+    border-radius:1rem;
+  }
+
+  .order-online a{
+    color: #EDEFEE;
+  }
+
   
-.hero_section{
+.sections{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 46rem;
+  min-height: 46rem;
   background-color: var(--primaryColor);
 }
+
 .hero_sec_center{
   width: 90%;
+  max-width: 92rem;
 }
 
 .hero_article{
@@ -133,11 +140,13 @@
   color: var(--primaryColorB);
   margin: 0px;
 }
+
 .hero_text_header_p {
   color: #fff;
   font-size: 2rem;
   margin-top: 10px;
 }
+
 .article_p {
   font-size: 2rem;
   color: #e6e6e6;
@@ -145,6 +154,7 @@
   max-width: 33.2rem;
   word-wrap: break-word;
 }
+
 .hero_div {
   margin-top:0px;
 }
@@ -152,21 +162,28 @@
 .hero_div p {
   line-height: 2rem;
 }
+
 .reserve_btn {
   display: flex;
   font-size: 1.5rem;
   font-weight: 600;
   padding: 15px 20px;
-  border-radius: 10px;
+  border-radius: 16px;
   background-color: var(--primaryColorB);
   border: none;
   outline: none;
   cursor: pointer;
   transition: 0.2s ease-in;
 }
+a {
+  text-decoration: none;
+  
+}
+
 .reserve_btn:hover {
   filter: brightness(0.8);
 }
+
 .hero_image {
   display: flex;
   justify-content: space-around;
@@ -193,9 +210,9 @@
   background: #fff;
 }
 
-
 .special-sec-center{
   width: 90%;
+  max-width: 92rem;
   margin-bottom:1rem;  
   display:flex;
   flex-direction:column;
@@ -263,6 +280,7 @@ text-align: justify;
 }
 
 .card-spSec_MaxW{
+  padding: 0.3rem;
   width: 100%;
   background:#fff;
   box-shadow: 0 0 5px #0006;
@@ -278,9 +296,9 @@ text-align: justify;
 .card-spSec-body_MaxW{
   display: flex;  
   margin-bottom: 1rem;
-  justify-content: space-between; 
-
+  justify-content: space-between;
   }
+
   .card-spSec-body_MaxW p{
     text-align: justify;
     margin-right: 1rem;
@@ -303,6 +321,22 @@ text-align: justify;
     color: #fff;
   }
 
+  .yellow-btn {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 15px 20px;
+    border-radius: 10rem;
+    background-color: #F4CE14;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+  }
+  
+  .yellow-btn:hover {
+    filter: brightness(0.8);
+  }
 
   .section-container{
     width:100%;
@@ -317,6 +351,7 @@ text-align: justify;
   
  .section-center{
     width: 90%; 
+    max-width: 92rem;
     display:flex;
     flex-direction:column; 
     justify-content: center;  
@@ -390,6 +425,7 @@ border-radius:16px;
 
   .testimony-header{
   width:90%;
+  max-width: 92rem;
   text-align:center;
   margin-left:auto;
   margin-right:auto;
@@ -422,6 +458,7 @@ border-radius:16px;
 
 .sec-centerFooter{
   width: 90%;
+  max-width: 92rem;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -483,6 +520,48 @@ text-decoration: none;
 color: #333333;
 font-weight: bold;
 }
+
+.booking-img-container{
+  margin: 1rem;
+  text-align: center;
+  width: 50%;
+}
+
+.booking-img{
+  max-width:17.5rem;
+  border-radius:1rem;
+  object-fit: cover;
+  margin: 1rem;
+ }
+
+
+
+.booking-form{
+  display: grid; 
+  width: 50%; 
+  gap: 20px;
+  color: #EDEFEE;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.booking-form input {
+  padding:10px 20px;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  color: var(--hightlightColorB);
+}
+
+.selection{
+  padding:10px 20px;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  color: var(--hightlightColorB);
+}
+
+
+
+
+
 
 
 
@@ -551,6 +630,12 @@ font-weight: bold;
     display: flex;
   }
 
+  .order-online{
+    border-radius: 0;
+    background-color: rgba(73, 94, 87,0.4);
+    
+  }
+
   .hero-article-img{
     width:17rem ;
     height: 12rem;
@@ -569,6 +654,8 @@ font-weight: bold;
   #spCards-Con_MaxW{
     display:flex;
   }
+
+
 
 
 }

@@ -2,17 +2,17 @@ import './App.css';
 
 import Nav from './components/Nav';
 import AppRoutes from './routes/AppRoutes';
-import Homepage from './components/Homepage';
 import Footer from './components/Footer'
+
 
 
 function App() {
   return (
-    <>
+    <main>
     <Nav/>
     <AppRoutes/>
-    <Footer/>
-    </>
+    <Footer/> 
+    </main>
   );
 }
 export default App;

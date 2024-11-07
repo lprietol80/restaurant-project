@@ -1,7 +1,7 @@
 import React from "react";
-import greekSalad from "../images/greek salad.jpg"
-import bruchetta from "../images/bruchetta.svg"
-import lemonDessert from "../images/lemon dessert.jpg"
+import greekSalad from "../images/greekSalad.jpg"
+import bruchetta from "../images/bruchetta.jpg"
+import lemonDessert from "../images/lemonDessert.jpg"
 import { Link, useNavigate } from "react-router-dom"
 const specialData =[
   {
@@ -35,9 +35,9 @@ function Specials ({image,title,price,description}){
   <section className="special-sec-center">
     <header className="spSec-headerCon">
       <h2>Special</h2>
-      <div>
+      <Link to="/menu">
         <button className="reserve_btn">Online Menu</button>
-      </div>
+      </Link>
     </header>
     <section id="spCards-Con">
       {

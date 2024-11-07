@@ -1,9 +1,10 @@
 import React from "react";
-import restauranfood from '../images/restauranfood.jpg'
+import restauranfood from '../images/restaurant-food.JPG'
+import { Link } from "react-router-dom";
 
 function Hero (){
   return (
-    <section className="hero_section">
+    <section className="sections">
       <section className="hero_sec_center">
         <article className="hero_article">
           <section className="hero_text">
@@ -14,7 +15,9 @@ function Hero (){
             <div className="hero_div">
               <p className="article_p">We are a family owned mediterranean restaurante focused on traditional recipes served width a modern twist</p>
             </div>
-            <button className="reserve_btn">Reserve a table</button>
+            <Link to="/bookingpage">
+              <button className="reserve_btn">Reserve a table</button>
+            </Link>
           </section>
           <div className="hero_image">
           <figure >

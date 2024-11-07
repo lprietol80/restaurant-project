@@ -1,0 +1,149 @@
+:root{
+  --primaryColor: #495E57;
+  --primaryColorB:#F4CE14;
+   --secondaryColor:#EE9972;
+   --secondaryColorB:#FBDABB;
+   --hightlightColor:#EDEFEE;
+   --hightlightColorB:#333333;
+   
+   /* sizes */
+   --max-width:57.5rem;
+  }
+
+
+
+/* ---------------Booking Form--------------- */
+
+form{
+  background:var(--primaryColor);
+  min-width: 30rem;
+  max-width: 60rem;
+  margin: 1rem auto;
+  border: 1px solid var(--hightlightColor);
+  border-radius: 1rem;
+  box-shadow: 5px 3px 9px rgba(205, 207, 206,0.3);
+
+}
+
+input, select, textarea{
+  padding: 1rem 0.5rem;
+  font-size:1.3rem ;
+  border: none;
+  border-radius: 0.5rem;
+}
+input[type="radio"]{
+  width: 1.3rem;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background-color: hsl(172, 67%, 45%);
+} 
+
+.form-row{
+  display: flex;
+  gap: 1rem;
+  color: var(--hightlightColor);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  justify-content: center;
+}
+.labin{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.seating-container{
+  font-weight: 400;
+  width: 100%;
+}
+
+.seating-container h5{
+  font-size: 1.5rem;
+}
+
+.seat-option{
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-container{
+  width: 90%;
+  max-width: 60rem;
+  margin: 1rem auto;
+  padding: 2rem 0rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+}
+
+.booking-article p {
+  font-size: 2rem;
+  color: var(--hightlightColor);
+  line-height: 2rem;
+  max-width: 33.2rem;
+  word-wrap: break-word;
+  margin-top: 2rem;
+}
+
+.booking-img-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.booking-imgA{
+  width:48%;
+  border-radius:1rem;
+  object-fit: cover;
+ }
+
+ .booking-imgB{
+ width:48%;
+ border-radius:1rem; 
+ object-fit: cover;
+ }
+
+ .redError{
+  color: red;
+  font-size: 1rem;
+  text-align: center;
+ }
+ 
+ .redError:hover{
+  color: #F4CE14;
+  font-weight: 900;
+ }
+
+ .confi-container{
+  border: solid 0.2rem var(--primaryColorB);
+  padding: 0rem 0.8rem;
+ }
+
+ .confi-row{
+  display: flex;
+  justify-content: space-between;
+ }
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+@media only screen and (max-width: 60rem)
+{
+form{
+  border: none;
+  box-shadow: none;
+  }
+
+}

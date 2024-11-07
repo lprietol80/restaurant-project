@@ -26,7 +26,7 @@ return(
             <li><Link to="/menu">Lunch</Link></li>
           </ul>
           <ul>
-            <li><Link to="/reservations">Reservations</Link></li>
+            <li><Link to="/bookingpage">Booking</Link></li>
             <li><Link to="/orderonline">Order</Link></li>
             <li><Link to="/delivery">Delivery</Link></li>
           </ul>
