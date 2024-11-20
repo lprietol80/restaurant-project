@@ -1,43 +1,48 @@
-import React, { useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { GoClock } from "react-icons/go";
-import { BiDish } from "react-icons/bi";
-import { LiaGlassCheersSolid } from "react-icons/lia";
-import { MdOutlineTableRestaurant } from "react-icons/md";
-import ConfirmationCard from "./ConfirmationCard";
 
+import React, {useState} from 'react';
 import "./booking.css";
+import { fontIcons } from '../utils/data';
+import ConfirmationCard from './ConfirmationCard';
 
-function Confirmation({ date, time, guests, occasion, option }) {
-  const [userName, setUserName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [comment, setComment] = useState("");
-  const [policy, setPolicy] = useState("");
-  const [confirmed, setconfirmed] = useState(false);
 
-  const handleNameChange = (e) => setUserName(e.target.value);
-  const handleLastChange = (e) => setLastname(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePhoneChange = (e) => setPhone(e.target.value);
-  const handleCommentChange = (e) => setComment(e.target.value);
-  const handlePolicyChange = (e) => setPolicy(e.target.value);
+
+function Confirmation({ date, time, guests, occasion, seat }) {
+  const [formData, setformData] = useState({
+    name:"",
+    lastName:"",
+    email:"",
+    phone:"",
+    comment:""
+  });
+
+  const [isConfirmed, setIsConfirmed] = useState(false)
+
+  const handleChange =(e) => {
+    const {name,value}= e.target;
+    setformData({
+      ...formData,
+      [name]:value
+    })
+  }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    setIsConfirmed(true)
+  }
 
   return (
-    
     <section>
-      {confirmed  ? (<ConfirmationCard/>):(
-        <section>
-      <form id="confirmation">
-        <section className="form-row">
+      {!isConfirmed ? (
+        <form onSubmit={handleSubmit}>
+      <section className="form-row">
           <div className="labin">
             <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
-              value={userName}
-              onChange={handleNameChange}
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Enter your firstname"
               required
             />
@@ -47,8 +52,9 @@ function Confirmation({ date, time, guests, occasion, option }) {
             <input
               type="text"
               id="lastname"
-              value={lastname}
-              onChange={handleLastChange}
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               placeholder="Enter your lastname"
               required
             />
@@ -59,14 +65,15 @@ function Confirmation({ date, time, guests, occasion, option }) {
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              value={email}
-              onChange={handleEmailChange}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter a valid email"
               required
             />
           </div>
         </section>
-
+        
         <section className="form-row">
           <div className="labin">
             <label htmlFor="phone">Phone number</label>
@@ -75,23 +82,23 @@ function Confirmation({ date, time, guests, occasion, option }) {
               id="phone"
               name="phone"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              value={phone}
-              onChange={handlePhoneChange}
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="123-123-1234"
               required
             />
           </div>
         </section>
-
         <section className="form-row">
           <div className="labin">
-            <label htmlFor="comment">Special request</label>
+            <label htmlFor="comment">Special request (optional)</label>
             <textarea
               id="comment"
               rows={8}
-              value={comment}
-              onChange={handleCommentChange}
-              placeholder="Your comment"
+              name="comment"
+              value={formData.comment}
+              onChange={handleChange}
+              placeholder="Your comment (optional)"
             ></textarea>
           </div>
         </section>
@@ -100,81 +107,40 @@ function Confirmation({ date, time, guests, occasion, option }) {
             <section className="confi-container">
               <div className="confi-row">
                 <h3>
-                  <FaRegCalendarAlt /> {date}
+                 <i className={fontIcons.calendar}> </i> {date}
                 </h3>
                 <h3>
-                  <GoClock /> {time}:00
+                <i className={fontIcons.time}> </i> {time}:00
                 </h3>
               </div>
               <div className="confi-row">
                 <h3>
-                  <BiDish /> {guests} dinners
+                <i className={fontIcons.user}> </i> {guests} dinners
                 </h3>
                 <h3>
-                  <LiaGlassCheersSolid /> {occasion}
+                <i className={fontIcons.occasion}> </i> {occasion}
                 </h3>
               </div>
               <h3>
-                <MdOutlineTableRestaurant /> {option}
+                {seat}
               </h3>
             </section>
           </div>
         </section>
-
         <section className="form-row">
-          <div className="seat-option">
-            <input
-              type="radio"
-              id="policy"
-              name="policy"
-              value="acepted"
-              checked={policy === "acepted"}
-              onChange={handlePolicyChange}
-              required
-            />
-            <p>You agree to our friendly Privacy policy</p>
-          </div>
-        </section>
-
-        <section>
-          {userName == "" ||
-          lastname == "" ||
-          email == "" ||
-          phone == "" ||
-          policy == "" ? (
-            <h1 className="redError">please fill in all required fields</h1>
-          ) : (
-            ""
-          )}
+          <button className='yellow-btn' type='submit'>
+            confirm your reservation
+          </button>
         </section>
       </form>
-    
-      <section className="form-row">
-        <button
-          className="yellow-btn"
-          type="submit"
-          form="confirmation"
-          value="Submit"
-          onClick={(e) => {
-            e.preventDefault();
-            if (
-              userName !== "" &&
-              lastname !== "" &&
-              email !== "" &&
-              phone !== "" &&
-              policy == "acepted"
-            ) {
-              console.log(userName, lastname, email, phone, policy);
-              setconfirmed(true);
-            }
-          }}
-        >
-          Confirm your reservation
-        </button>
-      </section>
-      </section>)}
+    ):(
+      <ConfirmationCard/>
+      )}
+      
+
     </section>
-  );
+  
+  )
 }
 
-export default Confirmation;
+export default Confirmation

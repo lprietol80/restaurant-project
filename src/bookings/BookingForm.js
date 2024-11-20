@@ -1,46 +1,53 @@
-import React, { useState } from "react";
+import {useState} from 'react';
 import "./booking.css";
 import { getCurrentDate } from "../utils/functions";
 import { options } from "../utils/data";
-import YellowBtn from "../components/YellowBtn";
-import Confirmation from "./Confirmation";
+import Confirmation from './Confirmation';
 
 function BookingForm() {
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [selectedGuests, setSelectedGuests] = useState("");
-  const [selectedOccasion, setSelectedOccasion] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
-  const [completed, setCompleted] = useState(false);
-  const [confirmationBtn, setConfirmationBtn] = useState(false);
+  const [formData, setformData] = useState({
+    date: "",
+    time:"",
+    guests:"",
+    occasion:"",
+    seat:""
+  });
 
-  const handleDateChange = (e) => setSelectedDate(e.target.value);
-  const handleTimeChange = (e) => setSelectedTime(e.target.value);
-  const handleGuestsChange = (e) => setSelectedGuests(e.target.value);
-  const handleOccasionChange = (e) => setSelectedOccasion(e.target.value);
-  const handleOptionChange = (e) => setSelectedOption(e.target.value);
+  const [isFilled, setIsFilled] = useState(false)
+
+  const handleChange = (e)=>{
+    const {name,value} = e.target;
+        setformData({
+      ...formData,
+      [name]:value
+    })
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    if (formData.time!=='' && formData.occasion!=='' && formData.seat!=='') {
+    setIsFilled(true);
+    }
+  }
+
+
+
 
   return (
     <section>
-      {completed ? (
-        <Confirmation
-          date={selectedDate}
-          time={selectedTime}
-          guests={selectedGuests}
-          occasion={selectedOccasion}
-          option={selectedOption}
-        />
-      ) : (
-        <form>
-          <section className="form-row">
+      {!isFilled ? (
+        
+        <form onSubmit={handleSubmit}>
+      <section className="form-row">
             <div className="labin">
               <label htmlFor="rest-date">Choose date</label>
               <input
                 type="date"
                 id="res-date"
+                name="date"
                 min={getCurrentDate()}
-                value={selectedDate}
-                onChange={handleDateChange}
+                value={formData.date}
+                onChange={handleChange}
+                required
               />
             </div>
             <div className="labin">
@@ -48,8 +55,9 @@ function BookingForm() {
               <select
                 id="res-time"
                 name="time"
-                value={selectedTime}
-                onChange={handleTimeChange}
+                value={formData.time}
+                onChange={handleChange}
+                required
               >
                 <option>Select time</option>
                 {options.slice(4).map((item, index) => (
@@ -65,8 +73,10 @@ function BookingForm() {
               <label htmlFor="guests">Number of guests</label>
               <select
                 id="guests"
-                value={selectedGuests}
-                onChange={handleGuestsChange}
+                name="guests"
+                value={formData.guests}
+                onChange={handleChange}
+                required
               >
                 <option value="" disabled>
                   Number of dinners
@@ -77,7 +87,7 @@ function BookingForm() {
                     {item} dinner
                   </option>
                 ))}
-              </select>
+              </select>              
             </div>
           </section>
           <section className="form-row">
@@ -87,17 +97,19 @@ function BookingForm() {
               </label>
               <select
                 id="occasion"
-                value={selectedOccasion}
-                onChange={handleOccasionChange}
+                name="occasion"
+                value={formData.occasion}
+                onChange={handleChange}
               >
                 <option>Occasion</option>
                 <option>Birthday</option>
                 <option>Anniversary</option>
                 <option>Engagement</option>
+                <option>A date</option>
+                <option>Casual</option>
               </select>
             </div>
           </section>
-
           <section className="form-row">
             <div className="seating-container">
               <h5>Seating options</h5>
@@ -108,8 +120,7 @@ function BookingForm() {
                   id="seatStd"
                   name="seat"
                   value="Standard"
-                  checked={selectedOption === "Standard"}
-                  onChange={handleOptionChange}
+                  onChange={handleChange}
                 />
               </div>
               <div className="seat-option">
@@ -119,49 +130,37 @@ function BookingForm() {
                   id="seatOtsd"
                   name="seat"
                   value="Outside"
-                  checked={selectedOption === "Outside"}
-                  onChange={handleOptionChange}
+                  onChange={handleChange}
                 />
-              </div>
+              </div> 
             </div>
           </section>
           <section>
-            {selectedDate == "" ||
-            selectedTime == "" ||
-            selectedGuests == "" ||
-            selectedOccasion == "" ||
-            selectedOption == "" ? (
+            {formData.time==='' ||
+             formData.occasion==='' ||
+             formData.seat==='' ? (
               <h1 className="redError">please fill in all required fields</h1>
             ) : (
-              ""
-            )}
+              null
+            )
+            }
           </section>
-        </form>
-      )}
-      <section className="form-row">
-        {confirmationBtn ? (
-          ""
-        ) : (
-          <YellowBtn
-            text="Make your reservation"
-            onClickFunction={(e) => {
-              e.preventDefault();
-              if (
-                selectedDate !== "" &&
-                selectedTime !== "" &&
-                selectedGuests !== "" &&
-                selectedOccasion !== "" &&
-                selectedOption !== ""
-              ) {
-                setCompleted(true);
-                setConfirmationBtn(true);
-              }
-            }}
-          />
-        )}
-      </section>
+          <section className="form-row">
+          <button className='yellow-btn' type='submit'>Make your reservation</button>
+          </section>
+      </form>
+      ):(
+        <Confirmation
+        date={formData.date}
+        time={formData.time}
+        guests={formData.guests}
+        occasion={formData.occasion}
+        seat={formData.seat}
+        />
+      )
+      }
     </section>
-  );
+  )
 }
 
-export default BookingForm;
+export default BookingForm

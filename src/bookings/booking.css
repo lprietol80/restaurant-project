@@ -126,6 +126,40 @@ input[type="radio"]:checked {
   justify-content: space-between;
  }
 
+ .confirm_card {
+  width: 80%;
+  height: 250px;
+  background-color: #EDEFEE;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  box-shadow: #333333 0.4rem 0.4rem 5px;
+}
+
+.confirm_card h1 {
+  font-size: 3rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.confirm_card h2 {
+  font-size: 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
