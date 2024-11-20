@@ -6,7 +6,7 @@ import Confirmation from './Confirmation';
 
 function BookingForm() {
   const [formData, setformData] = useState({
-    date: "",
+    date:  getCurrentDate(),
     time:"",
     guests:"",
     occasion:"",
@@ -28,10 +28,6 @@ function BookingForm() {
     setIsFilled(true);
     }
   }
-
-
-
-
   return (
     <section>
       {!isFilled ? (
@@ -59,7 +55,7 @@ function BookingForm() {
                 onChange={handleChange}
                 required
               >
-                <option>Select time</option>
+                <option disabled>Select time</option>
                 {options.slice(4).map((item, index) => (
                   <option key={index} value={item}>
                     {item}:00 pm
@@ -139,7 +135,7 @@ function BookingForm() {
             {formData.time==='' ||
              formData.occasion==='' ||
              formData.seat==='' ? (
-              <h1 className="redError">please fill in all required fields</h1>
+              <p className="redError">please fill in all required fields</p>
             ) : (
               null
             )
