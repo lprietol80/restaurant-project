@@ -5,7 +5,6 @@ import joss from "../images/Joss.jpg"
 import EdSheeran from "../images/Sheeran.jpg"
 import star from "../images/star.png"
 
-
 export const testimonialData =[
   {
     id: 1,

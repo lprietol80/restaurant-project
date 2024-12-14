@@ -110,7 +110,7 @@ function Confirmation({ date, time, guests, occasion, seat }) {
                  <i className={fontIcons.calendar}> </i> {date}
                 </h3>
                 <h3>
-                <i className={fontIcons.time}> </i> {time}:00
+                <i className={fontIcons.time}> </i> {time}
                 </h3>
               </div>
               <div className="confi-row">

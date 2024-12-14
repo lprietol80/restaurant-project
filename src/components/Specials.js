@@ -27,7 +27,7 @@ const specialData =[
   },
 ]
 
-function Specials ({image,title,price,description}){
+function Specials (){
   return(
 
 
@@ -52,11 +52,13 @@ function Specials ({image,title,price,description}){
               {card.title && <h3>{card.price}</h3>}
             </header>
             {card.description && <p>{card.description}</p>}
-            <Link to={`/ordenonline/`}>
-            <button className="card-btn"> Order online</button>
-            </Link>
+
             
           </div>
+          <Link to={`/orderonline/`}>
+            <button className="card-btn"> Order online</button>
+            </Link>
+          
         </div> 
 
         ))

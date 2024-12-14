@@ -1,39 +1,82 @@
-import {useState} from 'react';
+import { useReducer, useState } from "react";
 import "./booking.css";
 import { getCurrentDate } from "../utils/functions";
 import { options } from "../utils/data";
-import Confirmation from './Confirmation';
+import Confirmation from "./Confirmation";
+
+const seededRandom = function (seed) {
+  let m = 2 ** 35 - 31;
+  let a = 185852;
+  let s = seed % m;
+  return function () {
+    return (s = (s * a) % m) / m;
+  };
+};
+
+const fetchAPI = function (date) {
+  let result = [];
+  let random = seededRandom(date.getDate());
+
+  for (let i = 17; i <= 23; i++) {
+    if (random() < 0.5) {
+      result.push(i + ":00");
+    }
+    if (random() < 0.5) {
+      result.push(i + ":30");
+    }
+  }
+  return result;
+};
+const submitAPI = function (formData) {
+  return true;
+};
+
+//define the initialState
+const initialState = {
+  availableTimes: fetchAPI(new Date()),
+};
+
+//define the reducer function
+
+function updateTimes(state, action) {
+  return { availableTimes: fetchAPI(new Date()) };
+}
 
 function BookingForm() {
   const [formData, setformData] = useState({
-    date:  getCurrentDate(),
-    time:"",
-    guests:"",
-    occasion:"",
-    seat:""
+    date: getCurrentDate(),
+    time: "",
+    guests: "",
+    occasion: "",
+    seat: "",
   });
 
-  const [isFilled, setIsFilled] = useState(false)
+  const [state, dispatch] = useReducer(updateTimes, initialState);
 
-  const handleChange = (e)=>{
-    const {name,value} = e.target;
-        setformData({
+  const [isFilled, setIsFilled] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformData({
       ...formData,
-      [name]:value
-    })
-  }
-  const handleSubmit = (e)=>{
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.time!=='' && formData.occasion!=='' && formData.seat!=='') {
-    setIsFilled(true);
+    if (
+      formData.time !== "" &&
+      formData.occasion !== "" &&
+      formData.seat !== ""
+    ) {
+      setIsFilled(true);
     }
-  }
+  };
   return (
     <section>
       {!isFilled ? (
-        
         <form onSubmit={handleSubmit}>
-      <section className="form-row">
+          <section className="form-row">
             <div className="labin">
               <label htmlFor="rest-date">Choose date</label>
               <input
@@ -47,7 +90,7 @@ function BookingForm() {
               />
             </div>
             <div className="labin">
-              <label htmlFor="res-time">Choose time</label>
+              <label htmlFor="res-time">Select time:</label>
               <select
                 id="res-time"
                 name="time"
@@ -55,10 +98,10 @@ function BookingForm() {
                 onChange={handleChange}
                 required
               >
-                <option disabled>Select time</option>
-                {options.slice(4).map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}:00 pm
+                <option>Select time</option>
+                {state.availableTimes.map((time, index) => (
+                  <option key={index} value={time}>
+                    {time}
                   </option>
                 ))}
               </select>
@@ -83,7 +126,7 @@ function BookingForm() {
                     {item} dinner
                   </option>
                 ))}
-              </select>              
+              </select>
             </div>
           </section>
           <section className="form-row">
@@ -128,35 +171,33 @@ function BookingForm() {
                   value="Outside"
                   onChange={handleChange}
                 />
-              </div> 
+              </div>
             </div>
           </section>
           <section>
-            {formData.time==='' ||
-             formData.occasion==='' ||
-             formData.seat==='' ? (
+            {formData.time === "" ||
+            formData.occasion === "" ||
+            formData.seat === "" ? (
               <p className="redError">please fill in all required fields</p>
-            ) : (
-              null
-            )
-            }
+            ) : null}
           </section>
           <section className="form-row">
-          <button className='yellow-btn' type='submit'>Make your reservation</button>
+            <button className="yellow-btn" type="submit">
+              Make your reservation
+            </button>
           </section>
-      </form>
-      ):(
+        </form>
+      ) : (
         <Confirmation
-        date={formData.date}
-        time={formData.time}
-        guests={formData.guests}
-        occasion={formData.occasion}
-        seat={formData.seat}
+          date={formData.date}
+          time={formData.time}
+          guests={formData.guests}
+          occasion={formData.occasion}
+          seat={formData.seat}
         />
-      )
-      }
+      )}
     </section>
-  )
+  );
 }
 
-export default BookingForm
+export default BookingForm;

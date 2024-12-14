@@ -1,16 +1,50 @@
 import React from 'react'
-import ConfirmationCard from '../bookings/ConfirmationCard';
+import {menuDishes} from '../utils/menu_data';
+import { Link } from 'react-router-dom';
 
 
 function Menu () {
   return (
-    <section>
-      <div>
-      <h1>This is the menu section</h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam id voluptas sunt accusantium dolor placeat? Officiis, consequuntur at! Fugit harum neque, totam soluta ipsam nisi facilis dolor consequatur! Ipsam aperiam quod ullam, repellat modi nulla ducimus quibusdam animi, dignissimos magnam ut doloremque! Placeat inventore animi numquam aut obcaecati impedit corrupti facere perspiciatis autem, debitis excepturi voluptatum ducimus minus earum in rem tempore officia distinctio nemo facilis cumque dicta. Nostrum ex qui voluptas ab consectetur porro quasi mollitia provident et alias! Eos officia ab, inventore repellat assumenda quo excepturi ipsum minus tempore, eius modi ullam corporis hic dolores sed sunt?
-        </div>
-      
-      
+    <section className="special-section">
+  <section className="special-sec-center">
+  <article className="about-article center">
+  
+            <h1 className="hero_text_h1">Our Menu</h1>
+            <h3>Order your favorite food</h3>
+        </article>
+   
+
+
+
+
+
+    <section id="spCards-Con2">
+     
+  {
+  menuDishes.map((card)=>(
+    <div className="card-spSec" key={card.id}>  
+          <div className="card-spSec-imgCon">
+            {card.image && <img src={card.image} alt={card.title} className="card-spSec-img"/>}
+          </div>
+          <div className="card-spSec-body">
+            <header className="spSec-headerCon">
+              {card.title && <h3>{card.title}</h3>}
+              {card.title && <h3>${card.price}</h3>}
+            </header>
+            {card.description && <p>{card.description}</p>}
+
+            
+          </div>
+          <Link to={`/orderonline/`}>
+            <button className="card-btn"> Order online</button>
+            </Link>
+        </div> 
+  
+  
+  ))
+  }
+    </section>
+    </section>
     </section>
   )
 }

@@ -21,7 +21,6 @@ return (
 
         </article>
       </div>
-      {/* <div className="about-img-container"> */}
       <div className="booking-img-container">
         <img src={restaurant} alt="restaurant outside" className="booking-imgA"/>
         <img src={chef} alt="cheft Adrian making salad" className="booking-imgB"  />

@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function Login () {
+function Login() {
   return (
     <section>
-      <div>
-      <h1>This is the login section</h1>
-        </div>
+      <div>login section</div>
     </section>
-  )
+  );
 }
 
 export default Login;
