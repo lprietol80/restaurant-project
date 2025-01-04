@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react';
 import "./booking.css";
-import { fontIcons } from '../utils/data';
+import { fontIcons } from '../../utils/data';
 import ConfirmationCard from './ConfirmationCard';
 
 

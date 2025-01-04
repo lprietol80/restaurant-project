@@ -1,12 +1,12 @@
 import React from "react";
 import BookingForm from "./BookingForm";
-import  restaurant from '../images/restaurant.jpg'
+import restaurant from "../../images/restaurant.jpg"
 import "./booking.css"
-import chef from "../images/restaurantChef.jpg"
+import chef from "../../images/restaurantChef.jpg"
 
 function BookingPage (){
 return (
-  <>
+  <> 
   <section style={{background:"#495E57", paddingBottom:"2rem"}}>
     <section className="article-container">
       <div>

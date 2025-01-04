@@ -4,18 +4,18 @@ import { testimonialData } from "../utils/data";
 function Testimonials (){
 
   return (
-<section class="section-container dark-bgd">
-  <section class="section-center">
-    <header class="section-header">
+<section className="section-container dark-bgd">
+  <section className="section-center">
+    <header className="section-header">
         <h2>Testimonials</h2> 
     </header>    
-    <section class="section-body">
+    <section className="section-body">
     {testimonialData.map((item,index)=>(
     <Testimonial key={index}{...item}/>
     ))}
     </section>
 
-  </section> 
+  </section>  
 
 </section>)  
   }

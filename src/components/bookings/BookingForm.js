@@ -1,7 +1,7 @@
 import { useReducer, useState } from "react";
 import "./booking.css";
-import { getCurrentDate } from "../utils/functions";
-import { options } from "../utils/data";
+import { getCurrentDate } from "../../utils/functions";
+import { options } from "../../utils/data";
 import Confirmation from "./Confirmation";
 
 const seededRandom = function (seed) {
@@ -76,9 +76,12 @@ function BookingForm() {
     <section>
       {!isFilled ? (
         <form onSubmit={handleSubmit}>
+          {" "}
           <section className="form-row">
+            {" "}
             <div className="labin">
-              <label htmlFor="rest-date">Choose date</label>
+              {" "}
+              <label htmlFor="rest-date">Choose date</label>{" "}
               <input
                 type="date"
                 id="res-date"
@@ -87,105 +90,151 @@ function BookingForm() {
                 value={formData.date}
                 onChange={handleChange}
                 required
-              />
-            </div>
+                aria-required="true"
+                aria-describedby="date-description"
+              />{" "}
+              <span id="date-description" className="sr-only">
+                Please choose a date for your reservation.
+              </span>{" "}
+            </div>{" "}
             <div className="labin">
-              <label htmlFor="res-time">Select time:</label>
+              {" "}
+              <label htmlFor="res-time">Select time:</label>{" "}
               <select
                 id="res-time"
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
                 required
+                aria-required="true"
+                aria-describedby="time-description"
               >
-                <option>Select time</option>
+                {" "}
+                <option>Select time</option>{" "}
                 {state.availableTimes.map((time, index) => (
                   <option key={index} value={time}>
-                    {time}
+                    {" "}
+                    {time}{" "}
                   </option>
-                ))}
-              </select>
-            </div>
-          </section>
+                ))}{" "}
+              </select>{" "}
+              <span id="time-description" className="sr-only">
+                Please select a time for your reservation.
+              </span>{" "}
+            </div>{" "}
+          </section>{" "}
           <section className="form-row">
+            {" "}
             <div className="labin">
-              <label htmlFor="guests">Number of guests</label>
+              {" "}
+              <label htmlFor="guests">Number of guests</label>{" "}
               <select
                 id="guests"
                 name="guests"
                 value={formData.guests}
                 onChange={handleChange}
                 required
+                aria-required="true"
+                aria-describedby="guests-description"
               >
+                {" "}
                 <option value="" disabled>
-                  Number of dinners
-                </option>
-
+                  {" "}
+                  Number of dinners{" "}
+                </option>{" "}
                 {options.map((item) => (
                   <option key={item} value={item}>
-                    {item} dinner
+                    {" "}
+                    {item} dinner{" "}
                   </option>
-                ))}
-              </select>
-            </div>
-          </section>
+                ))}{" "}
+              </select>{" "}
+              <span id="guests-description" className="sr-only">
+                Please select the number of guests for your reservation.
+              </span>{" "}
+            </div>{" "}
+          </section>{" "}
           <section className="form-row">
+            {" "}
             <div className="labin">
+              {" "}
               <label htmlFor="occasion" id="occasion">
-                Occasion
-              </label>
+                {" "}
+                Occasion{" "}
+              </label>{" "}
               <select
                 id="occasion"
                 name="occasion"
                 value={formData.occasion}
                 onChange={handleChange}
+                aria-describedby="occasion-description"
               >
-                <option>Occasion</option>
-                <option>Birthday</option>
-                <option>Anniversary</option>
-                <option>Engagement</option>
-                <option>A date</option>
-                <option>Casual</option>
-              </select>
-            </div>
-          </section>
+                {" "}
+                <option>Occasion</option> <option>Birthday</option>{" "}
+                <option>Anniversary</option> <option>Engagement</option>{" "}
+                <option>A date</option> <option>Casual</option>{" "}
+              </select>{" "}
+              <span id="occasion-description" className="sr-only">
+                Please select the occasion for your reservation.
+              </span>{" "}
+            </div>{" "}
+          </section>{" "}
           <section className="form-row">
+            {" "}
             <div className="seating-container">
-              <h5>Seating options</h5>
+              {" "}
+              <h5>Seating options</h5>{" "}
               <div className="seat-option">
-                <p>Standard</p>
+                {" "}
+                <p>Standard</p>{" "}
                 <input
                   type="radio"
                   id="seatStd"
                   name="seat"
                   value="Standard"
                   onChange={handleChange}
-                />
-              </div>
+                  aria-describedby="seatStd-description"
+                />{" "}
+                <span id="seatStd-description" className="sr-only">
+                  Standard seating option.
+                </span>{" "}
+              </div>{" "}
               <div className="seat-option">
-                <p>Outside</p>
+                {" "}
+                <p>Outside</p>{" "}
                 <input
                   type="radio"
                   id="seatOtsd"
                   name="seat"
                   value="Outside"
                   onChange={handleChange}
-                />
-              </div>
-            </div>
-          </section>
+                  aria-describedby="seatOtsd-description"
+                />{" "}
+                <span id="seatOtsd-description" className="sr-only">
+                  Outside seating option.
+                </span>{" "}
+              </div>{" "}
+            </div>{" "}
+          </section>{" "}
           <section>
+            {" "}
             {formData.time === "" ||
             formData.occasion === "" ||
             formData.seat === "" ? (
               <p className="redError">please fill in all required fields</p>
-            ) : null}
-          </section>
+            ) : null}{" "}
+          </section>{" "}
           <section className="form-row">
-            <button className="yellow-btn" type="submit">
-              Make your reservation
-            </button>
-          </section>
+            {" "}
+            <button
+              className="yellow-btn"
+              type="submit"
+              aria-label="Make your reservation"
+            >
+              {" "}
+              Make your reservation{" "}
+            </button>{" "}
+          </section>{" "}
         </form>
       ) : (
         <Confirmation

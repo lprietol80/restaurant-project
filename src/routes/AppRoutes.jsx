@@ -6,7 +6,7 @@ import Login from "../components/Login";
 import Menu from "../components/Menu";
 import Nopage from "../components/Nopage";
 import OrderOnline from "../components/OrderOnline";
-import BookingPage from "../bookings/BookingPage";
+import BookingPage from "../components/bookings/BookingPage";
 
 
 function AppRoutes (){
