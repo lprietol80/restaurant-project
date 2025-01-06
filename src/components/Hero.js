@@ -2,7 +2,7 @@ import React from "react";
 import restauranfood from '../images/restaurant-food.JPG'
 import { Link } from "react-router-dom";
 
-function Hero (){
+function Hero (){ 
   return (
     <section className="sections">
       <section className="hero_sec_center">
